@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Favorites - Never Lose a ChatGPT Answer Again</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 1.5rem 0;
+            background: #0d1117;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #10a37f;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #10a37f 0%, #1a7f64 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #7d8590;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #10a37f;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #1a7f64;
+            transform: translateY(-2px);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: #161b22;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e6edf3;
+        }
+
+        .features .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7d8590;
+            margin-bottom: 4rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #21262d;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            transition: transform 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-card h3 {
+            color: #10a37f;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            min-height: 2.8rem;
+        }
+
+        .feature-card p {
+            color: #7d8590;
+            flex-grow: 1;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+            background: #0d1117;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e6edf3;
+        }
+
+        .faq .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7d8590;
+            margin-bottom: 4rem;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            transform: translateX(8px);
+            border-color: #10a37f;
+            box-shadow: 0 4px 12px rgba(16, 163, 127, 0.15);
+        }
+
+        .faq-item h3 {
+            color: #e6edf3;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            color: #7d8590;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #e6edf3;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: #7d8590;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 0;
+            background: #0d1117;
+            border-top: 1px solid #21262d;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #7d8590;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #10a37f;
+        }
+
+        .footer p {
+            color: #7d8590;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .features h2,
+            .faq h2,
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="img/34.png" alt="ChatGPT Saver" class="logo-img">
+                    ChatGPT Favorites
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Never Lose a ChatGPT Answer Again</h1>
+            <p>Save your best ChatGPT responses in one click. Fast search, easy export. No registration needed.</p>
+            <a href="#" class="cta-button">Add to Chrome - It's Free</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why You'll Love It</h2>
+            <p class="subtitle">The simplest way to build your personal knowledge base from ChatGPT.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>One-Click Save</h3>
+                    <p>Just click the star icon next to any ChatGPT response. No more copying and pasting.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Instant Search</h3>
+                    <p>Quickly find any saved answer with powerful search functionality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Easy Export</h3>
+                    <p>Export your saved responses to various formats when you need them.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Your Data is Safe</h3>
+                    <p>All data stored locally in your browser. We don't have access to your conversations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="subtitle">Everything you need to know about the extension.</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How does it work?</h3>
+                    <p>Just install the extension. A star icon (★) will appear next to every ChatGPT response. Click it to save instantly.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is my data safe?</h3>
+                    <p>Yes! All your saved answers are stored locally in your browser. We don't have access to your data.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is it really free?</h3>
+                    <p>Yes, the core version is completely free. A PRO version with cloud sync and more features is planned for the future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Never Lose a ChatGPT Answer Again?</h2>
+            <p>Join thousands of users who are already building their knowledge base.</p>
+            <a href="#" class="cta-button">Add to Chrome - It's Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="mailto:pronindenys@yahoo.com">Contact</a>
+            </div>
+            <p>© 2025 ChatGPT Favorites. Not affiliated with OpenAI.</p>
+        </div>
+    </footer>
+</body>
+</html>
